@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgba(5, 3, 3, 0.774);
+}
+
+header{
+    background-color: navy;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    color: white;
+    font-style: italic;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.30), 0 11px 8px rgba(0,0,0,0.22);
+}
+span{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+span >input{
+    width: 30em;
+    display: flex;
+    border-radius: 5em;
+    text-align: center;
+    margin-left: 25%;
+    border: 5px solid aqua;
+}
+
+span > button{
+    background-color: aqua;
+    color: navy;
+    border: none;
+    width: 5em;
+}
+
+span > button:hover{
+background-color: navy;
+color: aqua;
+}
+
+#movies{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 3em;
+}
+
+#movie{
+    width: 30%;
+    background-color: navy;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    border-radius: 1em;
+}
+#movie > img{
+    max-width: 100%;
+}
+
+@media only screen and (min-width:320px) and (max-width:480px) { 
+ 
+    #movies{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 3em;
+    }
+    
+    #movie{
+        width: 100%;
+        background-color: rgb(218, 146, 51);
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bolder;
+        border-radius: 1em;
+    }
+    #movie > img{
+        max-width: 100%;
+    }
+
+    span >input{
+        width: 30em;
+        display: flex;
+        border-radius: 5em;
+        text-align: center;
+        margin-left: 0;
+        border: none;
+    }
+    
+}
+
+@media only screen and (min-width:481px) and (max-width:770px) {
+
+    #movies{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 3em;
+    }
+    
+    #movie{
+        width: 80%;
+        background-color: rgb(218, 146, 51);
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bolder;
+        border-radius: 1em;
+    }
+    #movie > img{
+        max-width: 100%;
+    }
+
+    span >input{
+        width: 30em;
+        display: flex;
+        border-radius: 5em;
+        text-align: center;
+        margin-left: 0;
+        border: none;
+    }
+
+}
