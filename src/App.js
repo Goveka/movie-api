@@ -1,6 +1,6 @@
 import React, {useState,useRef} from 'react';
 import './App.css';
-import Movie_container from  './movie-container';
+import MovieContainer from  './movie-container';
 
 function App() {
   const[movieList, setMovieList]= useState([])
@@ -40,7 +40,7 @@ function App() {
       <button onClick={search}>search</button>
     </span>
     <div id='movies'>
-      <Movie_container setMovieList={setMovieList} movieList={movieList} />
+      <MovieContainer setMovieList={setMovieList} movieList={movieList} />
     </div>
     </>
 
