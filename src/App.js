@@ -1,11 +1,34 @@
 import React, {useState,useRef} from 'react';
 import './App.css';
-import Movie_container from  './movie-container';
+import MovieContainer from  './movie-container';
 
 function App() {
-  const[movieList, setMovieList]= useState([])
+  const[movieList, setMovieList]= useState([]);
   const searchInput=useRef();
+  const[err, setErr]= useState('');
   
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '2d6e8fcaf6msha33c7309355fa46p1987afjsnaa1e2d3b8078',
+      'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
+    }
+  };
+
+  fetch("https://online-movie-database.p.rapidapi.com/auto-complete?q=game%20", options)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      setMovieList(movies =>{
+        return data.d;
+      })
+    })
+    .catch(err => {
+      setErr(error =>{
+        return err
+      })
+    });
 
   function search(){
     
@@ -26,7 +49,11 @@ function App() {
           return data.d;
         })
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        setErr(error =>{
+          return err;
+        })
+      });
     }
 
   return (
@@ -40,7 +67,7 @@ function App() {
       <button onClick={search}>search</button>
     </span>
     <div id='movies'>
-      <Movie_container setMovieList={setMovieList} movieList={movieList} />
+      <MovieContainer setMovieList={setMovieList} movieList={movieList}  err={err} setErr={setErr}/>
     </div>
     </>
 
