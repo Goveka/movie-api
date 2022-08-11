@@ -5,11 +5,11 @@
 }
 
 body{
-    background-color: #321608;
+    background-color: red;
 }
 
 header{
-    background-color: navy;
+    background-color: lime;
     display: flex;
     text-align: center;
     justify-content: center;
