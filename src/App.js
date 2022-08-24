@@ -1,34 +1,11 @@
 import React, {useState,useRef} from 'react';
 import './App.css';
-import MovieContainer from  './movie-container';
+import SecondContainer from './secondContainer';
 
 function App() {
-  const[movieList, setMovieList]= useState([]);
+
   const searchInput=useRef();
-  const[err, setErr]= useState('');
-  
-
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '2d6e8fcaf6msha33c7309355fa46p1987afjsnaa1e2d3b8078',
-      'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
-    }
-  };
-
-  fetch("https://online-movie-database.p.rapidapi.com/auto-complete?q=game%20", options)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      setMovieList(movies =>{
-        return data.d;
-      })
-    })
-    .catch(err => {
-      setErr(error =>{
-        return err
-      })
-    });
+  const[secondList, setSecondList]=useState([])
 
   function search(){
     
@@ -40,21 +17,19 @@ function App() {
         'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
       }
     };
-
-    fetch(`https://online-movie-database.p.rapidapi.com/auto-complete?q=${search}%20`, options)
+    
+    fetch(`https://online-movie-database.p.rapidapi.com/title/v2/find?title=${search}%20of&limit=20&sortArg=moviemeter%2Casc`, options)
       .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        setMovieList(movies =>{
-          return data.d;
-        })
+      .then(response => { setSecondList(movies =>{
+        return response.results
       })
-      .catch(err => {
-        setErr(error =>{
-          return err;
-        })
-      });
+    })
+
+      .catch(err => console.error(err));
     }
+
+
+
 
   return (
     <>
@@ -63,11 +38,11 @@ function App() {
       <p>explore all your favourite movies and tvSeries</p>
     </header>
     <span>
-      <input type={search} ref={searchInput} placeholder='search...'  />
+      <input type={search} ref={searchInput} placeholder='search...' value="game"  />
       <button onClick={search}>search</button>
     </span>
     <div id='movies'>
-      <MovieContainer setMovieList={setMovieList} movieList={movieList}  err={err} setErr={setErr}/>
+      <SecondContainer secondList={secondList} setSecondList={setSecondList} />
     </div>
     </>
 
