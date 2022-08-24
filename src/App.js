@@ -38,7 +38,7 @@ function App() {
       <p>explore all your favourite movies and tvSeries</p>
     </header>
     <span>
-      <input type={search} ref={searchInput} placeholder='search...' value="game"  />
+      <input type={search} ref={searchInput} placeholder='search...'   />
       <button onClick={search}>search</button>
     </span>
     <div id='movies'>
