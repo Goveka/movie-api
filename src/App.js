@@ -5,7 +5,8 @@ import SecondContainer from './secondContainer';
 function App() {
 
   const searchInput=useRef();
-  const[secondList, setSecondList]=useState([])
+  const[secondList, setSecondList]=useState([]);
+  
 
   function search(){
     
@@ -30,7 +31,6 @@ function App() {
 
 
 
-
   return (
     <>
     <header>
@@ -38,7 +38,7 @@ function App() {
       <p>explore all your favourite movies and tvSeries</p>
     </header>
     <span>
-      <input type={search} ref={searchInput} placeholder='search...' value="game"  />
+      <input type={search} ref={searchInput} placeholder='search...'   />
       <button onClick={search}>search</button>
     </span>
     <div id='movies'>
