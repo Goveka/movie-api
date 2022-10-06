@@ -6,11 +6,14 @@ function App() {
 
   const searchInput=useRef();
   const[secondList, setSecondList]=useState([]);
+  const[errorMsg, setErrMsg]=useState('')
   
 
   function search(){
     
     const search=searchInput.current.value;
+
+
     const options = {
       method: 'GET',
       headers: {
@@ -26,7 +29,8 @@ function App() {
       })
     })
 
-      .catch(err => console.error(err));
+      .catch(err => setErrMsg(err));
+
     }
 
 
@@ -42,7 +46,7 @@ function App() {
       <button onClick={search}>search</button>
     </span>
     <div id='movies'>
-      <SecondContainer secondList={secondList} setSecondList={setSecondList} />
+      <SecondContainer secondList={secondList} setSecondList={setSecondList} errorMsg={errorMsg} setErrMsg={setErrMsg} />
     </div>
     </>
 
